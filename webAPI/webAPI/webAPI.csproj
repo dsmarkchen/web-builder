@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
+    <PackageReference Include="Iesi.Collections" Version="4.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="NHibernate" Version="5.2.5" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.111" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\web\web.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -3,26 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using web;
 
 namespace webAPI.Controllers
 {
     [Route("api/[controller]")]
     public class ModuleController : Controller
     {
-    // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly NHibernate.ISession _session;
+        public ModuleController(NHibernate.ISession session)
+            : base()
         {
-            return new string[] { "value1", "value2" };
+            _session = session;
+         
+        }
+
+
+        // GET: api/<controller>
+        [HttpGet]
+        public IEnumerable<ModuleDto> Get()
+        {
+            var xs = _session.Query<Module>();
+            IList<ModuleDto> lst = new List<ModuleDto>();
+            foreach(Module node in xs)
+            {
+                var dto = new ModuleDto
+                {
+                    Id = node.Id,
+                    Name = node.Name
+                };
+
+                foreach (Record r in node.Records)
+                {
+                    RecordDto rDto = new RecordDto
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        Content = r.Content,
+                    };
+
+                    dto.Records.Add(rDto);
+                    dto.RecordsCount++;
+                }
+                lst.Add(dto);
+            }
+            return lst;
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ModuleDto Get(int id)
         {
-            return "value";
+            using (var transaction = _session.BeginTransaction())
+            {
+                var node = _session.Get<Module>(id);
+                if (node == null) return null;
+
+                var dto = new ModuleDto
+                {
+                    Name = node.Name,
+                    Id = node.Id,
+
+                };
+                foreach (Record r in node.Records)
+                {
+                    RecordDto rDto = new RecordDto
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        Content = r.Content,
+                    };
+
+                    dto.Records.Add(rDto);
+                }
+                return dto;
+            }
         }
 
         // POST api/<controller>
@@ -43,4 +98,7 @@ namespace webAPI.Controllers
         {
         }
     }
+
+
+  
 }

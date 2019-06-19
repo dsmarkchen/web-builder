@@ -19,6 +19,13 @@ namespace web
             get;
             set;
         }
+
+        public virtual string Content
+        {
+            get;
+            set;
+        }
+
         public virtual RecordType Type
         {
             get;
@@ -26,6 +33,20 @@ namespace web
         }
 
         public virtual Module Module
+        {
+            get;
+            set;
+        }
+    }
+
+    public class RecordDto
+    {
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+
+        public virtual string Content { get; set; }
+
+        public virtual RecordType Type
         {
             get;
             set;

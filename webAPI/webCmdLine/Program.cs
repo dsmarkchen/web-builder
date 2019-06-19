@@ -30,8 +30,8 @@ namespace webCmdLine
                 xSessionManager.ExportSchema();
                 DateTime dt = DateTime.Now;
                 var run11 = new web.Module { Id = 0, Name = "HSE", };
-                var r1 = new Record { Name = "Title", Type = RecordType.rec_string };
-                var r2 = new Record { Name = "Content", Type = RecordType.rec_string };
+                var r1 = new Record { Name = "Committed to Health and Safety", Content = "Our safety performance has demonstrated that operational success and safety can be achieved collaboratively. ",  Type = RecordType.rec_string };
+                var r2 = new Record { Name = "Focused on Environmentally Safe Solutions", Content = "We demonstrate our commitment to being environmentally-conscious through: tada", Type = RecordType.rec_string };
 
                 run11.AddRecord(r1);
                 run11.AddRecord(r2);

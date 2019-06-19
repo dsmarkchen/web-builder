@@ -49,7 +49,7 @@ namespace webAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-                string _db_filename = @"c:\tempsq\foo.sq3";
+                string _db_filename = @"c:\tempsq\web-builder.sq3";
 
                 services.AddSingleton<FluentConfiguration>((provider) => {
 

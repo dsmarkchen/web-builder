@@ -38,4 +38,20 @@ namespace web
 
 
     }
+
+    public class ModuleDto
+    {
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+
+        public virtual int RecordsCount { get; set; }
+
+        public List<RecordDto> Records { get; set; }
+
+        public ModuleDto()
+        {
+            Records = new List<RecordDto>() { };
+            RecordsCount = 0;
+        }
+    }
 }

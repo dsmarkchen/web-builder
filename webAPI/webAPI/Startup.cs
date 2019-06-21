@@ -112,7 +112,7 @@ namespace webAPI
 
             // angularjs client project start with port 8000
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:8000", "http://www.myclientserver.com")
+                builder.WithOrigins("http://localhost:8000", "http://192.168.1.75:8000")
                     .AllowAnyHeader()
                     .AllowAnyMethod());
             app.UseMvc();

@@ -57,46 +57,29 @@
 
 
 
-<body>
+<body ng-app="app">
+<div class="container">
+    <div ng-include src="'module.html'"> </div>
+</div>
 
-<div class="main">
 
-<div class="container-fluid" ng-app="indexApp" ng-controller="indexCtrl" >
+<div class="container" ng-controller="indexCtrl" >
 
     <div class='col-sm-12'> 
         <br> <p>{{myWelcome}}  </p>
         <br><br>
    </div>
-<div>
- <input ng-model="getModuleId"> 
- <button ng-click="getone(getModuleId)" class="btn btn-primary">Fetch</button> 
-    <p ng-show="loading">[Please enter a number]</p>
-    <!-- Showing the status -->
-    <p ng-hide="loading">{{Module.name}}</p>
-
-   <table class="table table-striped table-bordered">
-
-      <tr ng-repeat="x in Module.records">
-        <td>{{ x.id | number }}</td>
-        <td>{{ x.name}}</td>
-        <td>{{ x.content }}</td>
-    
-      </tr>
-  </table>
-
 </div>
 
-<div class='col-sm-12'> 
+<div class='container'> 
 <br>    
     <button ng-click="fetchHTML()" class="btn btn-primary">HTML</button> 
     <button ng-click="fetchJS()" class="btn btn-primary">JS</button> 
 <br> <br>
 <br>
-    </div>
-
 </div>
 
-</div>
+
 </body>
 </html>
 

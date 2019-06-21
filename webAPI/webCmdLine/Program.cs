@@ -36,11 +36,17 @@ namespace webCmdLine
                 run11.AddRecord(r1);
                 run11.AddRecord(r2);
 
+                var run21 = new web.Module { Id = 0, Name = "Team", };
+                var r21 = new Record { Name = "BH", Content = "phd ", Type = RecordType.rec_string };
+                var r22 = new Record { Name = "SP", Content = "this is content", Type = RecordType.rec_string };
+                run21.AddRecord(r21);
+                run21.AddRecord(r22);
 
                 using (var transaction = session.BeginTransaction())
                 {
                     session.Save(run11);
 
+                    session.Save(run21);
 
                     transaction.Commit();
                 }
